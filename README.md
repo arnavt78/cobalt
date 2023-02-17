@@ -1,2 +1,3 @@
-# cobol
+# Cobalt
+
 The next-gen OS!
