@@ -1,8 +1,4 @@
 #include <stdio.h>
-int bios();
-int main() {
-  bios()
-}
 int bios() {
   printf("\e[1;1H\e[2J"); //Clears Screen.
   char os[10] = "COBALT\n"; //Opearting System Name, Maximum of 10 characters.
