@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "services.h"
 int bios() {
   printf("\e[1;1H\e[2J"); //Clears Screen.
   char os[10] = "COBALT\n"; //Opearting System Name, Maximum of 10 characters.
@@ -36,8 +37,11 @@ int bios() {
   printf("\n>> Betabuild has been changed from -1 [Null] to ");
   switch (betastatus) {
     case 0:
-      printf("0. {FALSE}\n");
+      printf("0 [False].\n");
     case 1:
-      printf("1. {TRUE}\n");
+      printf("1 [True].\n");
   }
+  printf("\n>> Starting Services... ");
+  sleep(3);
+  services();
 }
