@@ -2,6 +2,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <limits.h>
+#include "verbose.h"
 
 //colors for text
 #define RED "\x1B[31m"
@@ -18,59 +19,58 @@ int services() {
   // Here's where all the Application Functions will be stored. Kind of Lonely here right now.
   printf("\n>> Complete.\n");
   int Booted = 1; // True, determines if Cobalt has booted
-  
+  verbose("Booted has been declared as 1 [True].");
   // While Cobalt is booted (and has not crashed/been exited), interperet commands
   while (Booted = 1) {
-    
-    char command[7];
-    int history_position = 0;
-    int history[100];
+    // Creates a history of the commands that have been recieved
+    char command[20];
     gets(command);
-    
-    if (sizeof(history) < 100) {
-      history[history_position] = command;
-    } else {
-      int history[100];
-    }
-
+    verbose("Gathered Input.");
     // Defining commands
     char EXIT[] = ".exit";
     char HELP[] = "help";
     char CWD[] = "cwd";
-    char HISTORY[] = "history";
-
+    char VERBOSE[] = ".verbose";
+    verbose("Declared Keywords for Indexing.");
     if (strcmp(EXIT, command) == 0) {
+      verbose("Matched Input with Keyword {EXIT}");
       printf(">> Stopping services...\n");
+      verbose("Shutting Down...");
       sleep(3);
       // Here's where all services get stopped. After this line of code.
+      verbose("Exited Cobalt with Exit Code 0");
       return 0;
-
-      //Inside this else if is what the HISTORY command prints to the screen
-    } else if (strcmp(HISTORY, command) == 0) { //Doesn't work for some reason
-      for (int i = 0; i < sizeof(history)/sizeof(history[0]); i++) {
-        printf((char) history_position + ". " + i);
-      }
 
       //Inside this else if is what the HELP command prints to the screen
     } else if (strcmp(HELP, command) == 0) {
       printf("\e[1;1H\e[2J");
+      verbose("Matched Input with Keyword {HELP}");
       printf(BLU "Cobalt " RED "HELP\n");
       printf(RESET "\n'.exit' - Ends all Cobalt services and shuts down the OS.");
       printf("\n'help' - View information about all available commands in the recovery environment.");
+      printf("\n'cwd' - View the current working Directory.");
 
       //Inside this else if is what the CWD command prints to the screen
     } else if (strcmp(CWD, command) == 0) {
-      char cwd[PATH_MAX];
+      verbose("Matched Input with Keyword {CWD}");
+      char cwd[260];
+      verbose("Declared Variable 'CWD' with name ");
       if (getcwd(cwd, sizeof(cwd)) != NULL) {
+        verbose("Found Current Working Directory. Outputting Result... ");
         printf("Current working directory: %s\n", cwd);
 
       } else {
+        verbose("Error: Could not find Current Working Directory.");
         printf("getcwd() error");
         return 1;
       }
-
+    // Returns an error if any command that is not defined is ran
     } else {
-      printf(YEL "[!] Invalid operation; please try again. [!]\n" RESET);
+      printf("{>} Failed to Match Input with Keyword. {");
+      printf(command);
+      printf("}\n");
+      printf(YEL "[!] Invalid operation. Please try again. [!]\n" RESET); 
     }
   }
 }
+//comment
