@@ -28,6 +28,7 @@ int services(hasverbose) {
     verbose("Gathered Input.", hasverbose);
     // Defining commands
     char EXIT[] = ".exit";
+    char EXITR[] = ".exit -r";
     char HELP[] = "help";
     char CWD[] = "cwd";
     char VERBOSE[] = ".verbose";
@@ -48,8 +49,15 @@ int services(hasverbose) {
       printf(BLU "Cobalt " RED "HELP\n");
       printf(RESET "\n'.exit' - Ends all Cobalt services and shuts down the OS.");
       printf("\n'help' - View information about all available commands in the recovery environment.");
-      printf("\n'cwd' - View the current working Directory.");
-
+      printf("\n'cwd' - View the current working Directory.\n");
+    } else if (strcmp(EXITR, command) == 0) {
+      verbose("Matched Input with Keyword {EXIT}", hasverbose);
+      printf(">> Stopping services...\n");
+      verbose("Shutting Down...", hasverbose);
+      sleep(3);
+      // Here's where all services get stopped. After this line of code.
+      verbose("Exited Cobalt with Exit Code 1", hasverbose);
+      return 1;
       //Inside this else if is what the CWD command prints to the screen
     } else if (strcmp(CWD, command) == 0) {
       verbose("Matched Input with Keyword {CWD}", hasverbose);
