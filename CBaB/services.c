@@ -78,8 +78,8 @@ int services(hasverbose) {
         printf("{>} Failed to Match Input with Keyword. {");
         printf(command);
         printf("}\n");
+      }
       printf(YEL "[!] Invalid operation. Please try again. [!]\n" RESET); 
-    }
   }
   }
 }
