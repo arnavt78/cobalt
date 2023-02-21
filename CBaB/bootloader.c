@@ -23,19 +23,25 @@ int main() {
   char recset[] = "2";
   char verbst[] = "3";
   int hasverbose;
+  int r;
   if (strcmp(guiset, response) == 0) {
     //gui code resides here
   } else if (strcmp(recset, response) == 0) {
     hasverbose = 0;
     verbose("Starting File [BIOS.C]", hasverbose);
-    bios(hasverbose);
+    r = bios(hasverbose);
   } else if (strcmp(verbst, response) == 0) {
     hasverbose = 1;
     verbose("Starting File [BIOS.C]", hasverbose);
-    bios(hasverbose);
+    r = bios(hasverbose);
   } else {
     //automatically runs gui code
   }
-
+  if (r == 0) {
+    return 0;
+  } else {
+    printf("\e[1;1H\e[2J");
+    main();
+  }
 }
 
