@@ -28,11 +28,11 @@ int main() {
     //gui code resides here
   } else if (strcmp(recset, response) == 0) {
     hasverbose = 0;
-    verbose("Starting File [BIOS.C]", hasverbose);
+    //verbose("Starting File [BIOS.C]", hasverbose);
     r = bios(hasverbose);
   } else if (strcmp(verbst, response) == 0) {
     hasverbose = 1;
-    verbose("Starting File [BIOS.C]", hasverbose);
+    //verbose("Starting File [BIOS.C]", hasverbose);
     r = bios(hasverbose);
   } else {
     //automatically runs gui code
