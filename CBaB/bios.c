@@ -74,5 +74,10 @@ int bios(hasverbose) {
   verbose("Check completed. [Successful]", hasverbose);
   printf("\n>> Starting Services... ");
   sleep(delay);
-  services(hasverbose);
+  int service_result = services(hasverbose);
+  if (service_result == 0) {
+    return 0;
+  } else {
+    return 1;
+  }
 }
