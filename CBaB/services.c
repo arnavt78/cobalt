@@ -31,7 +31,12 @@ int services(hasverbose) {
     char EXITR[] = ".exit -r";
     char HELP[] = "help";
     char CWD[] = "cwd";
+    char VERENB[] = ".verbose --enable";
+    char VERDIS[] = ".verbose --disable";
+    char VERADD[] = ".verbose --create";
     char VERBOSE[] = ".verbose";
+    char CLEARSCREEN[3];
+    CLEARSCREEN = "clr";
     verbose("Declared Keywords for Indexing.", hasverbose);
     if (strcmp(EXIT, command) == 0) {
       verbose("Matched Input with Keyword {EXIT}", hasverbose);
@@ -50,6 +55,8 @@ int services(hasverbose) {
       printf(RESET "\n'.exit' - Ends all Cobalt services and shuts down the OS.");
       printf("\n'help' - View information about all available commands in the recovery environment.");
       printf("\n'cwd' - View the current working Directory.\n");
+    } else if (strcmp(CLEAR, command) == 0) {
+      printf("\e[1;1H\e[2J");
     } else if (strcmp(EXITR, command) == 0) {
       verbose("Matched Input with Keyword {EXIT}", hasverbose);
       printf(">> Stopping services...\n");
@@ -59,6 +66,23 @@ int services(hasverbose) {
       verbose("Exited Cobalt with Exit Code 1", hasverbose);
       return 1;
       //Inside this else if is what the CWD command prints to the screen
+    } else if (strcmp(VERENB, command) == 0) {
+      hasverbose = 1;
+      verbose("Verbose Messages Enabled.");
+    } else if (strcmp(VERDIS, command) == 0) {
+      hasverbose = 0;
+      verbose("Verbose Messages Disabled.");
+    } else if (strcmp(VERADD, command) == 0) {
+      char subverbose[20];
+      gets(subverbose);
+      verbose(subverbose, hasverbose);
+    } else if (strcmd(VERBOSE, command) == 0) {
+      if (hasverbose = 0) {
+        printf("Verbose is", RED "Disabled." RESET);
+        printf(YEL "[!] Want to Enable it? Try .verbose --enable! [!]" RESET);
+      } else if (hasverbose == 1) {
+        printf("Verbose is", GRN "Enabled." RESET)
+      }
     } else if (strcmp(CWD, command) == 0) {
       verbose("Matched Input with Keyword {CWD}", hasverbose);
       char cwd[260];
@@ -72,6 +96,7 @@ int services(hasverbose) {
         printf("getcwd() error");
         return 1;
       }
+    // Clears Screen
     // Returns an error if any command that is not defined is ran
     } else {
       if (hasverbose == 1) {
@@ -81,6 +106,6 @@ int services(hasverbose) {
       }
       printf(YEL "[!] Invalid operation. Please try again. [!]\n" RESET); 
   }
-  }
+}
 }
 //comment
