@@ -35,8 +35,7 @@ int services(hasverbose) {
     char VERDIS[] = ".verbose --disable";
     char VERADD[] = ".verbose --create";
     char VERBOSE[] = ".verbose";
-    char CLEARSCREEN[3];
-    CLEARSCREEN = "clr";
+    char CLEAR[] = "clr";
     verbose("Declared Keywords for Indexing.", hasverbose);
     if (strcmp(EXIT, command) == 0) {
       verbose("Matched Input with Keyword {EXIT}", hasverbose);
@@ -76,12 +75,12 @@ int services(hasverbose) {
       char subverbose[20];
       gets(subverbose);
       verbose(subverbose, hasverbose);
-    } else if (strcmd(VERBOSE, command) == 0) {
+    } else if (strcmp(VERBOSE, command) == 0) {
       if (hasverbose = 0) {
         printf("Verbose is", RED "Disabled." RESET);
         printf(YEL "[!] Want to Enable it? Try .verbose --enable! [!]" RESET);
       } else if (hasverbose == 1) {
-        printf("Verbose is", GRN "Enabled." RESET)
+        printf("Verbose is", GRN "Enabled." RESET);
       }
     } else if (strcmp(CWD, command) == 0) {
       verbose("Matched Input with Keyword {CWD}", hasverbose);
