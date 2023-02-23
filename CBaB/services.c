@@ -2,6 +2,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <limits.h>
+#include <time.h>
 #include "verbose.h"
 
 //colors for text
@@ -36,6 +37,8 @@ int services(hasverbose) {
     char VERADD[] = ".verbose --create";
     char VERBOSE[] = ".verbose";
     char CLEAR[] = "clr";
+    char DATE[] = "date";
+    char TIME[] = "time";
     verbose("Declared Keywords for Indexing.", hasverbose);
     if (strcmp(EXIT, command) == 0) {
       verbose("Matched Input with Keyword {EXIT}", hasverbose);
@@ -53,9 +56,23 @@ int services(hasverbose) {
       printf(BLU "Cobalt " RED "HELP\n");
       printf(RESET "\n'.exit' - Ends all Cobalt services and shuts down the OS.");
       printf("\n'help' - View information about all available commands in the recovery environment.");
-      printf("\n'cwd' - View the current working Directory.\n");
+      printf("\n'cwd' - View the current working Directory.");
+      printf("\n'clr' - Clears the screen.");
+      printf("\n'date' - Shows the current date.");
+      printf("\n'time' - Shows the current time.");
+      printf("\n");
     } else if (strcmp(CLEAR, command) == 0) {
       printf("\e[1;1H\e[2J");
+    } else if (strcmp(DATE, command) == 0) {
+      time_t t = time(NULL);
+      struct tm tm = *localtime(&t);
+      printf("now: %d-%02d-%02d\n", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday);
+      printf("\n");
+    } else if (strcmp(TIME, command) == 0) {
+      time_t t = time(NULL);
+      struct tm tm = *localtime(&t);
+      printf("now: %02d:%02d:%02d\n", tm.tm_hour, tm.tm_min, tm.tm_sec);
+      printf("\n");
     } else if (strcmp(EXITR, command) == 0) {
       verbose("Matched Input with Keyword {EXIT}", hasverbose);
       printf(">> Stopping services...\n");
