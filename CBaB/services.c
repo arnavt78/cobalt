@@ -39,6 +39,7 @@ int services(hasverbose) {
     char CLEAR[] = "clr";
     char DATE[] = "date";
     char TIME[] = "time";
+    char ABOUT[] = "about";
     verbose("Declared Keywords for Indexing.", hasverbose);
     if (strcmp(EXIT, command) == 0) {
       verbose("Matched Input with Keyword {EXIT}", hasverbose);
@@ -60,6 +61,7 @@ int services(hasverbose) {
       printf("\n'clr' - Clears the screen.");
       printf("\n'date' - Shows the current date.");
       printf("\n'time' - Shows the current time.");
+      printf("\n'about' - Shows the build number of Cobalt.");
       printf("\n");
     } else if (strcmp(CLEAR, command) == 0) {
       printf("\e[1;1H\e[2J");
@@ -68,6 +70,9 @@ int services(hasverbose) {
       struct tm tm = *localtime(&t);
       printf("now: %d-%02d-%02d\n", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday);
       printf("\n");
+    } else if (strcmp(ABOUT, command) == 0) {
+      printf("Cobalt Build 20\n");
+      printf(YEL  "[!] You are currently running a beta build of Cobalt. Please upgrade to a newer version as soon as possible. [!]\n");
     } else if (strcmp(TIME, command) == 0) {
       time_t t = time(NULL);
       struct tm tm = *localtime(&t);

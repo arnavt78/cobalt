@@ -20,7 +20,7 @@ int bios(hasverbose) {
   printf("\e[1;1H\e[2J");             // Clears Screen.
   char os[25] = BLU "COBALT\n" RESET; // Opearting System Name, Maximum of 10 characters.
   verbose("Classified OS Name", hasverbose);
-  int ver = 8;                        // Operating System Build, Maximum of 5 characters.
+  int ver = 20;                        // Operating System Build, Maximum of 5 characters.
   verbose("Classified OS Data", hasverbose);
   printf("%s", os);        // Prints OS Name
   printf("%s", "BUILD: "); // Prints Build
