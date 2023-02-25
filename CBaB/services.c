@@ -39,7 +39,8 @@ int services(hasverbose) {
     char CLEAR[] = "clr";
     char DATE[] = "date";
     char TIME[] = "time";
-    char ABOUT[] = "about";
+    char ABOUT[] = "about"; //Arnav, you do this
+    char KILL[] = ".kill";
     verbose("Declared Keywords for Indexing.", hasverbose);
     if (strcmp(EXIT, command) == 0) {
       verbose("Matched Input with Keyword {EXIT}", hasverbose);
@@ -65,6 +66,11 @@ int services(hasverbose) {
       printf("\n");
     } else if (strcmp(CLEAR, command) == 0) {
       printf("\e[1;1H\e[2J");
+    } else if (strcmp(KILL, command) == 0) {
+      printf("\e[1;1H\e[2J");
+      hasverbose = 2; //Doesn't add an extra line before message
+      verbose(RED "Exited Cobalt with Code {0}" RESET, hasverbose);
+      return 0;
     } else if (strcmp(DATE, command) == 0) {
       time_t t = time(NULL);
       struct tm tm = *localtime(&t);
