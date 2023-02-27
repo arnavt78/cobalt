@@ -28,3 +28,13 @@ $ gcc -o Bootloader Bin/CBaB/verbose.c Bin/CBaB/services.c Bin/CBaB/bios.c Bin/C
 ## CBaB
 CBaB is the default Bootloader and BIOS made for Cobalt.
 Location: ```/Bin/CBaB```
+There are all couple of files located within this directory:
+```
+Bootloader.c <Main C File>
+Bios.h <Header File>
+Bios.c <C File>
+Services.h <Header File>
+Services.c <C File>
+Verbose.h <Header File>
+Verbose.c <C File>
+```
