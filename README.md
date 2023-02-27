@@ -25,3 +25,6 @@ To update the C code, navigate to the root of the Cobalt directory, then run the
 ```
 $ gcc -o Bootloader Bin/CBaB/verbose.c Bin/CBaB/services.c Bin/CBaB/bios.c Bin/CBaB/bootloader.c
 ```
+## CBaB
+CBaB is the default Bootloader and BIOS made for Cobalt.
+Location: ```/Bin/CBaB```
