@@ -5,14 +5,14 @@ The next-gen OS!
 ## Compile Code
 
 To compile the C code...
-- .elf file -
+- .elf file (Linux) -
 Navigate to the directory of the Bootloader file, and then type the following:
 
 ```
 ./Bootloader
 ```
-- .exe file -
-Run the executable Bootloader file (NOTE - Can only run on Operating Systems running Windows 7 and newer). You can run it from the Windows GUI, or you can type this: 
+- .exe file (Windows) -
+Run the executable Bootloader file (NOTE - Can only run on Windows Operating Systems running Windows 7 and newer). You can run it from the Windows GUI, or you can type this: 
 ```
 Bootloader.exe
 ```
