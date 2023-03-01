@@ -38,9 +38,9 @@ int bios(hasverbose) {
     verbose("Betabuild has been changed. [-1 --> 0]", hasverbose);
     betabuild = 0; // Set Betabuild to False
     printf("%s", os);
-    break;                                                                                                                                  // Exits
-  default:                                                                                                                                  // If Version is NOT 100,
-    betabuild = 1;
+    break;         // Exits
+  default: // If Version is NOT 100,
+    betabuild = -1; // Set Betabuild to True        
     verbose("Betabuild has been changed. [-1 --> 1]", hasverbose);                                                                                                                          // Set Betabuild to True
     printf("%s", os);
     verbose("Current Build has been marked as beta. Opening Balloon...", hasverbose);                                                                                                                       // Prints OS
@@ -49,32 +49,33 @@ int bios(hasverbose) {
   }
 
   sleep(delay);
+  printf("BETABUILD: ");
+  printf(betabuild);
+  printf(" <--- \n");
   verbose("Checking to see if Betabuild was changed successfully...", hasverbose);
-  const betastatus = betabuild;
-  switch (betastatus) { // Checks to see if the previous check worked properly, and checks if the variable 'BETABUILD' is 0 or 1, and not -1
-  case -1:
+  if (betabuild == -1) { // Checks to see if the previous check worked properly, and checks if the variable 'BETABUILD' is 0 or 1, and not -1
     verbose("Betabuild was not changed.", hasverbose);   // If BetaBuild is -1 (Should not be -1, if it is prints an Error.)
     printf("\e[1;1H\e[2J");    // Clears SCreen
     printf("%s", os);          // Prints OS Name
     char errortype[5] = "A.A"; // Creates the Error Type
-    printf(RED "A fatal error has occurred which has caused Cobalt to crash.\nCopy down the error code and then try restarting. If the problem persists, try contacting the developers of Cobalt.");
+    printf(RED "Cobalt\n\n");
+    printf(RED "\nA fatal error has occurred which has caused Cobalt to crash.\nCopy down the error code and then try restarting. If the problem persists, try contacting the developers of Cobalt.");
     printf(RED "\nSTOP: A.A [INVALID_BETA_STATUS]\n" RESET); // Crashes, Gives information on Crash
     return 1;
-  } // I'm gonna release Version 4 [The Previous Code] that I made.
+} // I'm gonna release Version 4 [The Previous Code] that I made.
 
   printf("\n>> Betabuild has been changed from -1 [Null] to ");
 
   // controls weather the user is in a beta version or not(?)
-  switch (betastatus) {
-  case 0:
+  if (betabuild == 0) {
     printf("0 [False].\n");
-  case 1:
+  } else {
     printf("1 [True].\n");
   }
   verbose("Check completed. [Successful]", hasverbose);
   printf("\n>> Starting Services... ");
   sleep(delay);
-  int service_result = services(hasverbose);
+  int service_result = services(hasverbose, ver);
   if (service_result == 0) {
     return 0;
   } else {

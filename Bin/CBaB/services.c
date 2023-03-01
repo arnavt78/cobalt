@@ -16,7 +16,7 @@
 #define BOLD "\e[1m"
 #define RESET "\x1B[0m"
 
-int services(hasverbose) {
+int services(hasverbose, ver) {
   // Here's where all the Application Functions will be stored. Kind of Lonely here right now.
   printf("\n>> Complete.\n");
   int Booted = 1; // True, determines if Cobalt has booted
@@ -62,13 +62,13 @@ int services(hasverbose) {
       printf("\n'clr' - Clears the screen.");
       printf("\n'date' - Shows the current date.");
       printf("\n'time' - Shows the current time.");
-      printf("\n'about' - Shows the build number of Cobalt.");
+      printf("\n'about' - Shows OS Information.");
       printf("\n");
     } else if (strcmp(CLEAR, command) == 0) {
       printf("\e[1;1H\e[2J");
     } else if (strcmp(ABOUT, command) == 0) {
-      printf(BLU "Cobalt\n" CYN "OS Information\n")
-      printf("Cobalt Build")
+      printf(BLU "Cobalt\n" CYN "OS Information\n" CLEAR);
+      printf("Cobalt Build 20\n");
     } else if (strcmp(KILL, command) == 0) {
       printf("\e[1;1H\e[2J");
       hasverbose = 1;
@@ -79,9 +79,6 @@ int services(hasverbose) {
       struct tm tm = *localtime(&t);
       printf("now: %d-%02d-%02d\n", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday);
       printf("\n");
-    } else if (strcmp(ABOUT, command) == 0) {
-      printf("Cobalt Build 20\n");
-      printf(YEL  "[!] You are currently running a beta build of Cobalt. Please upgrade to a newer version as soon as possible. [!]\n");
     } else if (strcmp(TIME, command) == 0) {
       time_t t = time(NULL);
       struct tm tm = *localtime(&t);
@@ -107,6 +104,7 @@ int services(hasverbose) {
       gets(subverbose);
       verbose(subverbose, hasverbose);
     } else if (strcmp(VERBOSE, command) == 0) {
+      printf("Test");
       if (hasverbose = 0) {
         printf("Verbose is", RED "Disabled." RESET);
         printf(YEL "[!] Want to Enable it? Try .verbose --enable! [!]" RESET);
@@ -138,4 +136,3 @@ int services(hasverbose) {
   }
 }
 }
-//comment
