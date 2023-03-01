@@ -10,11 +10,11 @@ int main() {
   printf("COBALT BOOT MANAGER\n");
   fflush(stdout);
   sleep(1);
-  printf("1 - Start Up Normally [GUI]\n");
+  printf("Startup Normally {1}\n");
   fflush(stdout);
-  printf("2 - Start Up Recovery Environment [CLI]\n");
+  printf("Fallback Startup {2}\n");
   fflush(stdout);
-  printf("3 - Start Up Recovery Environment [CLI + Verbose]\n");
+  printf("Verbose Startup {3}\n");
   fflush(stdout);
   char response[3];
   sleep(3);
