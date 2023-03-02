@@ -39,6 +39,8 @@ int main() {
   }
   if (r == 0) {
     return 0;
+  } else if (r == -1) {
+    return -1;
   } else {
     printf("\e[1;1H\e[2J");
     main();
