@@ -10,11 +10,11 @@ int main() {
   printf("COBALT BOOT MANAGER\n");
   fflush(stdout);
   sleep(1);
-  printf("Startup Normally {1}\n");
+  printf("Normal Startup (1)\n");
   fflush(stdout);
-  printf("Fallback Startup {2}\n");
+  printf("Fallback Startup (2)\n");
   fflush(stdout);
-  printf("Verbose Startup {3}\n");
+  printf("Verbose Startup (3)\n");
   fflush(stdout);
   char response[3];
   sleep(3);
@@ -39,6 +39,8 @@ int main() {
   }
   if (r == 0) {
     return 0;
+  } else if (r == -1) {
+    return -1;
   } else {
     printf("\e[1;1H\e[2J");
     main();

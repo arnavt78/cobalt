@@ -52,15 +52,16 @@ int bios(hasverbose) {
   verbose("Checking to see if Betabuild was changed successfully...", hasverbose);
   const betastatus = betabuild;
   switch (betastatus) { // Checks to see if the previous check worked properly, and checks if the variable 'BETABUILD' is 0 or 1, and not -1
-  case -1:
-    verbose("Betabuild was not changed.", hasverbose);   // If BetaBuild is -1 (Should not be -1, if it is prints an Error.)
-    printf("\e[1;1H\e[2J");    // Clears SCreen
-    printf("%s", os);          // Prints OS Name
-    char errortype[5] = "A.A"; // Creates the Error Type
-    printf(RED "A fatal error has occurred which has caused Cobalt to crash.\nCopy down the error code and then try restarting. If the problem persists, try contacting the developers of Cobalt.");
-    printf(RED "\nSTOP: A.A [INVALID_BETA_STATUS]\n" RESET); // Crashes, Gives information on Crash
-    return 1;
-  } // I'm gonna release Version 4 [The Previous Code] that I made.
+    case -1:
+      verbose("Betabuild was not changed.", hasverbose);   // If BetaBuild is -1 (Should not be -1, if it is prints an Error.)
+      printf("\e[1;1H\e[2J");    // Clears SCreen
+      printf("%s", os);          // Prints OS Name
+      char errortype[5] = "A.A"; // Creates the Error Type
+      printf(BOLD RED "A fatal error has occurred which has caused Cobalt to crash.\n");
+      printf(RESET RED "Copy down the error code and then try restarting. If the problem persists, try contacting the developers of Cobalt." RESET);
+      printf(RED "\nSTOP: A.A [INVALID_BETA_STATUS]\n" RESET); // Crashes, Gives information on Crash
+      return -1;
+    } // I'm gonna release Version 4 [The Previous Code] that I made.
 
   printf("\n>> Betabuild has been changed from -1 [Null] to ");
 
