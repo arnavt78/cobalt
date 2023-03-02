@@ -41,6 +41,7 @@ int services(hasverbose) {
     char TIME[] = "time";
     char ABOUT[] = "about";
     char KILL[] = ".kill";
+    char ECHO[] = ".echo";
     verbose("Declared Keywords for Indexing.", hasverbose);
     if (strcmp(EXIT, command) == 0) {
       verbose("Matched Input with Keyword {EXIT}", hasverbose);
@@ -66,6 +67,12 @@ int services(hasverbose) {
       printf("\n");
     } else if (strcmp(CLEAR, command) == 0) {
       printf("\e[1;1H\e[2J");
+    } else if (strcmp(ECHO, command) == 0) {
+      char echo[100];
+      gets(echo);
+      printf(">> ");
+      printf(echo);
+      printf("\n");
     } else if (strcmp(ABOUT, command) == 0) {
       printf(BLU "Cobalt\n" CYN "OS Information\n" RESET);
       printf("Cobalt Build 20\n");
