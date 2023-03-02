@@ -67,8 +67,8 @@ int services(hasverbose) {
     } else if (strcmp(CLEAR, command) == 0) {
       printf("\e[1;1H\e[2J");
     } else if (strcmp(ABOUT, command) == 0) {
-      printf(BLU "Cobalt\n" CYN "OS Information\n")
-      printf("Cobalt Build")
+      printf(BLU "Cobalt\n" CYN "OS Information\n" RESET);
+      printf("Cobalt Build 20\n");
     } else if (strcmp(KILL, command) == 0) {
       printf("\e[1;1H\e[2J");
       hasverbose = 1;
