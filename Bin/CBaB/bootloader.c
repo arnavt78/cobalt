@@ -25,7 +25,7 @@ int main() {
   int hasverbose;
   int r;
   if (strcmp(guiset, response) == 0) {
-    //gui code resides here
+    int status = system("./hi.exe");
   } else if (strcmp(recset, response) == 0) {
     hasverbose = 0;
     verbose("Starting File [BIOS.C]", hasverbose);
@@ -35,7 +35,7 @@ int main() {
     verbose("Starting File [BIOS.C]", hasverbose);
     r = bios(hasverbose);
   } else {
-    //automatically runs gui code
+    int status = system("./hi.exe");
   }
   if (r == 0) {
     return 0;
