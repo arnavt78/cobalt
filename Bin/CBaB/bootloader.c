@@ -26,6 +26,12 @@ int main() {
   int r;
   if (strcmp(guiset, response) == 0) {
     int status = system("./hi.exe");
+    if (status != 0) {
+      sleep(3);
+      hasverbose = 0;
+      verbose("Starting File [BIOS.C]", hasverbose);
+      r = bios(hasverbose);
+    }
   } else if (strcmp(recset, response) == 0) {
     hasverbose = 0;
     verbose("Starting File [BIOS.C]", hasverbose);
