@@ -35,6 +35,8 @@ Bios.h <Header File>
 Bios.c <C File>
 Services.h <Header File>
 Services.c <C File>
+Hi.exe <GUI Executable>
+Hi.py <GUI Python File>
 Verbose.h <Header File>
 Verbose.c <C File>
 ```
