@@ -25,7 +25,7 @@ int main() {
   int hasverbose;
   int r;
   if (strcmp(guiset, response) == 0) {
-    int status = system("./hi.exe");
+    int status = system("python ./desktop.py");
     if (status != 0) {
       sleep(3);
       hasverbose = 0;
@@ -41,7 +41,7 @@ int main() {
     verbose("Starting File [BIOS.C]", hasverbose);
     r = bios(hasverbose);
   } else {
-    int status = system("./hi.exe");
+    int status = system("python ./desktop.py");
   }
   if (r == 0) {
     return 0;
