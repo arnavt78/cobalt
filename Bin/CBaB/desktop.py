@@ -13,12 +13,11 @@ menu_def = [
 guilayout = [[sg.Image('./wallpaper.png')], [sg.Menu(menu_def)]]
 
 # Create the Cobalt GUI window, with the wallpaper as the background
-window = sg.Window(title="Cobalt", layout=guilayout)
-
+desktop = sg.Window(title="Cobalt", layout=guilayout)
 while True:
-    event, values = window.read()
+    event, values = desktop.read()
     if event == sg.WINDOW_CLOSED or event == 'Exit':
         break
     if event == 'Launchpad':
         lpad()
-window.close()
+desktop.close()
