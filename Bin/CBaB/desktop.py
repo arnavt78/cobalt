@@ -4,11 +4,12 @@ import PySimpleGUI as sg
 import asyncio
 import subprocess
 from launchpad import lpad
+from arithmetic import arithmetics 
 
 # Define the menus
 menu_def = [
-    ['&File', ['Exit']],
-    ['&Run', ['Launchpad']],
+    ['File', ['Exit']],
+    ['Run', ['Launchpad', 'Calculator']],
 ]
 guilayout = [[sg.Image('./wallpaper.png')], [sg.Menu(menu_def)]]
 
@@ -20,4 +21,7 @@ while True:
         break
     if event == 'Launchpad':
         lpad()
+    if event == 'Calculator':
+        arithmetics()
 desktop.close()
+
