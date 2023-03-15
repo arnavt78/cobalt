@@ -5,11 +5,11 @@ import asyncio
 import subprocess
 from launchpad import lpad
 from arithmetic import arithmetics 
-
+from rattle import Cobalt_Rattle
 # Define the menus
 menu_def = [
     ['File', ['Exit']],
-    ['Run', ['Launchpad', 'Calculator']],
+    ['Run', ['Launchpad', 'Calculator', 'Rattle']],
 ]
 guilayout = [[sg.Image('./wallpaper.png')], [sg.Menu(menu_def)]]
 
@@ -23,5 +23,7 @@ while True:
         lpad()
     if event == 'Calculator':
         arithmetics()
+    if event == 'Rattle':
+        Cobalt_Rattle()
 desktop.close()
 
