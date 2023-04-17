@@ -2,6 +2,8 @@
 # Run this file to optimize your image!
 # For Cobalt
 
+Clear-Host
+
 Write-Host "IMAGE OPTIMIZER AND CREATOR"
 Write-Host "For use with Cobalt!`n"
 
@@ -42,7 +44,6 @@ $fileStream.Close()
 Write-Host "Successfully added bytes to the binary!`n"
 
 $vboxConfirm = Read-Host -Prompt "Do you want to compile a disk image for use in VirtualBox? (Y/N)"
-
 if (!($vboxConfirm.ToLower() -eq "y" -or $vboxConfirm.ToLower() -eq "yes")) {
   Write-Host "All operations have been completed, exiting...`n"
   Exit
@@ -70,6 +71,21 @@ if (Test-Path $target) {
 Write-Host ""
 
 VBoxManage.exe convertfromraw $path $target --format VDI
+
+$vboxConfirm = Read-Host -Prompt "`nWould you like to create a new VM in VirtualBox for Cobalt? (Y/N)"
+if (!($vboxConfirm.ToLower() -eq "y" -or $vboxConfirm.ToLower() -eq "yes")) {
+  Write-Host "All operations have been completed, exiting...`n"
+  Exit
+}
+
+Write-Host "Creating virtual machine 'Cobalt'...`n"
+
+VBoxManage.exe createvm --name "Cobalt" --ostype "Other_64" --register
+VBoxManage.exe modifyvm "Cobalt" --memory 32 --cpus 1
+VBoxManage.exe storagectl "Cobalt" --name "IDE Controller" --add ide --bootable on
+VBoxManage.exe storageattach "Cobalt" --storagectl "IDE Controller" --port 0 --device 0 --type hdd --medium "cobalt.vdi"
+VBoxManage.exe modifyvm "Cobalt" --boot1 disk --boot2 none --boot3 none --boot4 none
+VBoxManage.exe modifyvm "Cobalt" --vram 12
 
 Write-Host "`nAll operations have been completed, exiting...`n"
 Exit
