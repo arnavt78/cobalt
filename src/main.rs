@@ -1,4 +1,3 @@
-// No standard library nor entry-level points
 #![no_std]
 #![no_main]
 
@@ -20,7 +19,7 @@ pub extern "C" fn _start() -> ! {
     loop {}
 }
 
-// On a panic state:
+/// This function is called on panic.
 #[panic_handler]
 fn panic(_info: &PanicInfo) -> ! {
     loop {}
