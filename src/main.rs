@@ -8,14 +8,14 @@ mod vga_buffer;
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
     let global_name: &str = "Cobalt";
-    let version: &str = "0.0.3";
-    let build: i32 = 3;
+    let version: &str = "0.0.4";
+    let build: i32 = 4;
 
     println!("Starting {}...\n", global_name);
     println!("{}", global_name);
-    use std::{thread, time};
-    thread::sleep(time::Duration::from_secs(2));
-    clearscreen::clear().expect("Error - Failure to clear screen.");
+    //use std::{thread, time};
+    //thread::sleep(time::Duration::from_secs(2));
+    //clearscreen::clear().expect("Error - Failure to clear screen.");
     println!("Welcome to {}!", global_name);
     println!("Version {} ({}).\n", build, version);
     println!("{} is running on build {}, v{}.\n", global_name, build, version);
