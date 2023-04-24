@@ -13,7 +13,7 @@ $binaryConfirm = Read-Host -Prompt "Do you want to compile a binary for Cobalt? 
 if ($binaryConfirm.ToLower() -eq "y" -or $binaryConfirm.ToLower() -eq "yes") {
   Write-Host "`nMaking binary for Cobalt by running 'cargo bootimage'..."
   cargo bootimage
-  Write-Host "Successfully make binary file in 'target\x86_64-cobalt\debug\bootimage-cobalt.bin'!"
+  Write-Host "Successfully made binary file in 'target\x86_64-cobalt\debug\bootimage-cobalt.bin'!"
 }
 
 # Prompt user for binary location just in case
